@@ -2,6 +2,10 @@ package com.rails.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -36,10 +40,16 @@ public class Price {
 	private String feesRemark;
 	private String isBreakFast;
 	private Integer numberOfBreakfast;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date laterBookingTime;
 	private String guaranteeCode;
 	private String holdTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date starCancel;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date endCancel;
 	private Double forfeit;
 	private String priceRemark;
@@ -49,7 +59,11 @@ public class Price {
 	private String isInstantConfirm;
 	private String validFlag;
 	private String publishState;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "GMT+8")
 	private Date createTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "GMT+8")
 	private Date versionNo;
 	private String nodeNum;
 	private String flag1;

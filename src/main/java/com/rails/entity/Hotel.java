@@ -1,18 +1,34 @@
 package com.rails.entity;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.rails.util.JsonDataUserType;
 
 import lombok.Data;
 
+@SuppressWarnings("serial")
 @Data
-public class Hotel {
+@Table(name = "gt10_hotel_adapter")
+@Entity
+@TypeDef(name = "JsonDataUserType", typeClass = JsonDataUserType.class)
+public class Hotel implements Serializable {
+	// private String hotelId;
+	@Id
 	private String hotelId;
-	private String bizdate;
-	private String updateTime;
+	private Integer city;
 	private String oldHotelId;
 	private String hotelName;
 	private String hotelNameEn;
-	private Double basePrice;
 	private String hotelGroup;
 	private String companyType;
 	private String fromChannel;
@@ -35,7 +51,6 @@ public class Hotel {
 	private String linkmanPhone;
 	private String linkmanOther;
 	private Integer priority;
-	private String location;
 	private Double longitude;
 	private Double latitude;
 	private Integer country;
@@ -46,7 +61,7 @@ public class Hotel {
 	private String provinceName;
 	private String oldProvince;
 	private String oldProvinceName;
-	private Integer city;
+	// private Integer city;
 	private String cityName;
 	private String oldCity;
 	private String oldCityName;
@@ -54,16 +69,24 @@ public class Hotel {
 	private String countyName;
 	private String oldCountyCode;
 	private String oldCountyName;
-	private List<Landmark> landmark;
-	private List<OldLandmark> oldLandmark;
-	private List<BusinessArea> businessArea;
-	private List<OldBusinessArea> oldBusinessArea;
+	private String landmark;
+	private String landmarkName;
+	private String oldLandmark;
+	private String oldLandmarkName;
+	private String businessArea;
+	private String businessAreaName;
+	private String oldBusinessArea;
+	private String oldBusinessAreaName;
 	private String announcement;
 	private String introduction;
 	private String setupYear;
 	private String decorateYear;
-	private List<HotelPolicy> hotelPolicy;
-	private List<HotelFacility> hotelFacility;
+	@Type(type = "JsonDataUserType")
+	private String hotelPolicy;
+	@Type(type = "JsonDataUserType")
+	private String hotelFacility;
+	// private List<HotelPolicy> hotelPolicy;
+	// private List<HotelFacility> hotelFacility;
 	private String tags;
 	private String hotelTips;
 	private String supportCard;
@@ -75,11 +98,17 @@ public class Hotel {
 	private String examineType;
 	private String hotelState;
 	private String validFlag;
-	private String createTime;
-	private String versionNo;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "GMT+8")
+	private Date createTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "GMT+8")
+	private Date versionNo;
 	private String introductionVector;
 	private Double hotelScore;
-	private String latestOrderTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "GMT+8")
+	private Date latestOrderTime;
 	private String belongComp1;
 	private String belongComp2;
 	private String nodeNum;

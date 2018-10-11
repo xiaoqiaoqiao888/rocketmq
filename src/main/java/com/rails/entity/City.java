@@ -20,6 +20,5 @@ public class City {
 	private Integer parentCityCode;
 	private Double lng;
 	private Double lat;
-	private String location;
 
 }

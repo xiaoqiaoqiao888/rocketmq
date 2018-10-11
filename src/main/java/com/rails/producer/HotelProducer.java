@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 
-import com.rails.entity.BasePrice;
+import com.rails.entity.Hotel;
 import com.rails.util.PostgreSqlJDBC;
 import com.rails.util.SendMessageUtil;
 
-public class BasePriceProducer {
+public class HotelProducer {
 
-	public static void main(String[] args) throws Exception {
+	public static void main() throws Exception {
 		// 生产者,可以指定producer集群
 		DefaultMQProducer producer = new DefaultMQProducer("Hotel_12306_Consumer");
 		// 设置name server的地址
@@ -19,10 +19,11 @@ public class BasePriceProducer {
 		System.out.println(producer.getNamesrvAddr());
 		System.out.println(producer.getClientIP());
 		System.out.println("start producer");
-		String sql = "select * from gt10_base_price ";
-		List<BasePrice> list = PostgreSqlJDBC.getListT(sql, BasePrice.class);
+		String sql = "select * from gt10_hotel_adapter ";
+		List<Hotel> list = PostgreSqlJDBC.getListT(sql, Hotel.class);
 		System.out.println("查询的数据总条数为：" + list.size());
 		// 发送消息
-		SendMessageUtil.getT(list, producer, "Hotel_gt10_base_price");
+		System.out.println(list);
+		SendMessageUtil.getT(list, producer, "Hotel_gt10_hotel_adapter");
 	}
 }

@@ -13,11 +13,4 @@ public class Zone {
 	private String hotFlag;
 	private String vaildFlag;
 
-	@Override
-	public String toString() {
-		return "{zoneCode=" + zoneCode + ", zoneName=" + zoneName + ", priority=" + priority + ", validFlag="
-				+ validFlag + ", cityCode=" + cityCode + ", cityName=" + cityName + ", hotFlag=" + hotFlag
-				+ ", vaildFlag=" + vaildFlag + "}";
-	}
-
 }
