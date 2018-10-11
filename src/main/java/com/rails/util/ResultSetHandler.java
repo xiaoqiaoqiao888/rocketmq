@@ -23,7 +23,7 @@ public class ResultSetHandler {
 			while (resultSet.next()) {
 				T instance = className.newInstance();
 				for (Field field : fields) {
-					String underline = CamelToUnderLine.getUnderline(field.getName());
+					String underline = CamelUnderLineTransfor.getUnderline(field.getName());
 					Object result = resultSet.getObject(underline);
 					boolean flag = field.isAccessible();
 					field.setAccessible(true);

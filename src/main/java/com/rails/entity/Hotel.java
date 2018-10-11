@@ -2,30 +2,18 @@ package com.rails.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.rails.util.JsonDataUserType;
 
 import lombok.Data;
 
 @SuppressWarnings("serial")
 @Data
-@Table(name = "gt10_hotel_adapter")
-@Entity
-@TypeDef(name = "JsonDataUserType", typeClass = JsonDataUserType.class)
 public class Hotel implements Serializable {
-	// private String hotelId;
-	@Id
 	private String hotelId;
-	private Integer city;
 	private String oldHotelId;
 	private String hotelName;
 	private String hotelNameEn;
@@ -61,7 +49,7 @@ public class Hotel implements Serializable {
 	private String provinceName;
 	private String oldProvince;
 	private String oldProvinceName;
-	// private Integer city;
+	private Integer city;
 	private String cityName;
 	private String oldCity;
 	private String oldCityName;
@@ -81,12 +69,8 @@ public class Hotel implements Serializable {
 	private String introduction;
 	private String setupYear;
 	private String decorateYear;
-	@Type(type = "JsonDataUserType")
-	private String hotelPolicy;
-	@Type(type = "JsonDataUserType")
-	private String hotelFacility;
-	// private List<HotelPolicy> hotelPolicy;
-	// private List<HotelFacility> hotelFacility;
+	private List<HotelPolicy> hotelPolicy;
+	private List<HotelFacility> hotelFacility;
 	private String tags;
 	private String hotelTips;
 	private String supportCard;
